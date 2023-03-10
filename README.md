@@ -1,7 +1,7 @@
 # Weather App
 
-<img src="/public/screenshots/1.png"/>
-<img src="/public/screenshots/2.png"/>
+<img src="/public/screens/1.png" style="max-width:50%" />
+<img src="/public/screens/2.png" style="max-width:50%" />
 
 ## Requirements
 
