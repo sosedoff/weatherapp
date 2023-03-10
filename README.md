@@ -1,11 +1,16 @@
 # Weather App
 
+<img src="/public/screenshots/1.png"/>
+<img src="/public/screenshots/2.png"/>
+
 ## Requirements
 
 - Ruby 3.2
 - PostgreSQL (for persistent storage)
 - Redis (for caching and background job processing)
 - OpenWeather API key (for fetching weather data)
+
+Workflow and Code overview is located in [NOTES.md](/NOTES.md)
 
 ## Installation
 
