@@ -12,6 +12,15 @@ Application is split into 2 systems: Web application to display data, and Worker
 to perform background jobs. Fetching weather data (and updating the existing one) is
 done via Sidekiq jobs.
 
+## Stack
+
+- Postgres: data persistence
+- Redis: for job queue and caching needs
+- Rails: Core framework
+- Sidekiq: Background processing (via ActiveJob)
+- Bootstrap: frontend UI framework
+- No javascript
+
 ## Flow
 
 1. Application does not include any locations by default, so user must search for a city or a zipcode.

@@ -1,3 +1,6 @@
+# ForecastService is responsible to interacting with Weather API client(s) and
+# managing the data cache for subsequent calls, if they're necessary.
+#
 class ForecastService
   CACHE_PREFIX = "forecast"
   CACHE_TTL = 5.minutes.to_i
@@ -8,12 +11,14 @@ class ForecastService
     @cache_key = location.id
   end
 
+  # Fetch current grabs the current weather data for a given coordinate from Weather API
   def fetch_current
     with_expiry("current") do
       @client.current(lat: @coords[0], lon: @coords[1])
     end
   end
 
+  # Fetch current grabs the extended forecast for a given coordinate from Weather API
   def fetch_extended
     with_expiry("extended") do
       @client.daily5(lat: @coords[0], lon: @coords[1])

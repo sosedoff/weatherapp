@@ -1,3 +1,6 @@
+# Location syncer service is reponsible for creating WeatherPoint records, holding the
+# current weather data at each location, as well as updating the sync statuses.
+#
 module Locations
   class Syncer
     include DataMapper

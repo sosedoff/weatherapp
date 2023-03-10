@@ -1,3 +1,6 @@
+# This is a high-level wrapper for interacting with all Location-specific services,
+# primarily used in background jobs, but could also be used direcly in the controller code.
+#
 module LocationService
   # Sync current fetches the current weather for location and caches it
   def self.sync_current(location)

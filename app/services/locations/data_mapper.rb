@@ -1,3 +1,9 @@
+# DataMapper translates raw data from the Weather client into "our" own format,
+# ie. compatible with WeatherPoint model.
+#
+# This mapping functionality ideally should be moved into the API client itself,
+# but we're leaving it here for demo purposes only.
+#
 module Locations
   module DataMapper
     def weather_point_attributes(data)
