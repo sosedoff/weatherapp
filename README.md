@@ -42,6 +42,14 @@ bundle exec foreman start
 
 This will start the Rails process on `http://localhost:3000` and Sidekiq worker.
 
+## Caching Data
+
+Enable Rails caching in development:
+
+```
+bundle exec rails dev:cache
+```
+
 ### Configuring OpenWeather Client
 
 Make sure you have valid [OpenWeather API](https://openweathermap.org/api) key.
