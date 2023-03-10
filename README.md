@@ -17,7 +17,7 @@ Workflow and Code overview is located in [NOTES.md](/NOTES.md)
 Clone repository and install the dependencies:
 
 ```bash
-git clone ...
+git clone https://github.com/sosedoff/weatherapp.git
 cd weatherapp
 bundle install
 ```
