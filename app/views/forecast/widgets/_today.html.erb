@@ -1,0 +1,60 @@
+<div class="card forecast today">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h5 class="card-title">Weather Today</h5>
+      </div>
+      <div class="col-4 text-muted text-end">
+        <%= time_ago_in_words location.last_sync_at %> ago
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <p class="h3"><%= point.temp %>&deg;</p>
+        <p class="text-muted">Current</p>
+      </div>
+      <div class="col-3">
+        <p class="h3"><%= point.temp_feels_like %>&deg;</p>
+        <p class="text-muted">Feels Like</p>
+      </div>
+      <div class="col">
+        <p class="h3">
+          <%= format_time point.sunrise_timestamp %>
+        </p>
+        <p class="text-muted">Sunrise</p>
+      </div>
+      <div class="col">
+        <p class="h3">
+          <%= format_time point.sunset_timestamp %>
+        </p>
+        <p class="text-muted">Sunset</p>
+      </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col"><strong>High / Low</strong></div>
+          <div class="col text-end"><%= point.temp_min %>&deg; / <%= point.temp_max %>&deg;</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col"><strong>Humidity</strong></div>
+          <div class="col text-end"><%= point.humidity %>%</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col"><strong>Wind</strong></div>
+          <div class="col text-end"><%= point.wind_speed %> mph</div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col"><strong>Visibility</strong></div>
+          <div class="col text-end"><%= point.visibility / 1600 %> mi</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

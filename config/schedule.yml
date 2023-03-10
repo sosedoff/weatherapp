@@ -1,0 +1,4 @@
+locations_sync:
+  cron: "* * * * *"
+  class: ScheduledSyncJob
+  queue: default

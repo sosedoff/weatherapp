@@ -1,0 +1,7 @@
+<%= render "locations/index/search" %>
+
+<% if @recent_locations.size > 0 %>
+  <div class="mt-4">
+    <%= render "locations/index/recent", locations: @recent_locations %>
+  </div>
+<% end %>

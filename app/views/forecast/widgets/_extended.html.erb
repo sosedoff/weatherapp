@@ -1,0 +1,25 @@
+<div class="card forecast extended">
+  <div class="card-body">
+    <h5 class="card-title">Extended Forecast</h5>
+    <% items.group_by { |d| d.timestamp.day }.each_pair do |_, points| %>
+      <% points.each do |point| %>
+        <div class="row">
+          <div class="col-3"><%= format_time_with_day point.timestamp %></div>
+          <div class="col-2">
+            <div class="h4"><%= point.temp %>&deg;</div>
+          </div>
+          <div class="col-1">
+            <div class="weather-icon small" style="background-image: url('http://openweathermap.org/img/wn/<%= point.condition_code %>.png');"></div>
+          </div>
+          <div class="col-2">
+            <%= point.condition %>
+          </div>
+          <div class="col-3">
+            <%= point.humidity %>% <span class="text-muted">humid</span>
+          </div>
+        </div>
+      <% end %>
+      <hr/>
+    <% end %>
+  </div>
+</div>

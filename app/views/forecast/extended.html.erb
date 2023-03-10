@@ -1,0 +1,20 @@
+<h2><%= @location.display_name %></h2>
+
+<div class="row g2">
+  <div class="col-auto">
+    <p>Extended forecast for the next 5 days with 3 hour window</p>
+  </div>
+  <div class="col text-end">
+    <%= link_to "Go Back", current_weather_path(@location) %>
+  </div>
+</div>
+
+<% if @extended %>
+  <%= render "forecast/widgets/extended", items: @extended %>
+<% else %>
+  <div class="card">
+    <div class="card-body">
+      <div class="text-muted text-center">Sorry, extended forecast is not available.</div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= form_for :search, url: search_path, method: :post do |f| %>
+  <h1>Get Started</h1>
+  <p>Search location by City or a Zip Code to get latest weather.</p>
+  <div class="row g-2">
+    <div class="col-8">
+      <%= f.text_field :address, placeholder: "Search City or Zip Code", class: "form-control form-control", list: "cities" %>
+      <datalist id="cities">
+        <option value="San Francisco">
+        <option value="New York">
+        <option value="Seattle">
+        <option value="Los Angeles">
+        <option value="Chicago">
+      </datalist>
+    </div>
+    <div class="col-auto">
+      <%= f.submit "Search", class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+<% end %>

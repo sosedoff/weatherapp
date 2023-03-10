@@ -1,0 +1,30 @@
+<div class="card forecast current">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-8">
+        <h5 class="card-title">
+          <%= location.city %>, <%= location.state %>
+          as of <%= format_time(point.timestamp) %>
+        </h5>
+      </div>
+      <div class="col-4 text-muted text-end">
+        <% if cached %>
+          <span class="badge rounded-pill text-bg-secondary">CACHED</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <div class="display-2"><%= point.temp %>&deg;</div>
+        <div class="h3"><%= point.condition %></div>
+        <div class="h5">
+          Day <%= point.temp_max %>&deg; <span class="text-muted"> &mdash; </span>
+          Night <%= point.temp_min %>&deg;
+        </div>
+      </div>
+      <div class="col-4 text-center">
+        <div class="weather-icon large" style="background-image: url('http://openweathermap.org/img/wn/<%= point.condition_code %>@4x.png');"></div>
+      </div>
+    </div>
+  </div>
+</div>

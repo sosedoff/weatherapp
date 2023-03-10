@@ -1,0 +1,20 @@
+<% if @location.last_sync_at %>
+  <%= render "forecast/widgets/current", location: @location, point: @point, cached: @cached %>
+  <%= render "forecast/widgets/today", location: @location, point: @point %>
+
+  <% if @extended %>
+    <%= render "forecast/widgets/extended", items: @extended %>
+  <% else %>
+    <div class="text-center">
+      <%= link_to "View extended forecast", extended_weather_path(@location) %>
+    </div>
+  <% end %>
+<% else %>
+  <%= render "forecast/widgets/syncing", location: @location %>
+  <script>
+    // Auto-reload the page to display the loaded location data
+    // NOTE: Inlining for simplicity
+    setTimeout(() => { window.location.reload(); }, 2000)
+  </script>
+<% end %>
+

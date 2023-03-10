@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="/">Weather App</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"></li>
+      </ul>
+      <%= form_for :search, url: search_path, method: :post, class: "d-flex" do |f| %>
+        <%= f.text_field :address, placeholder: "Search City or Zip Code", class: "form-control me-1", list: "cities" %>
+        <%= f.submit "Go", class: "btn btn-outline-success" %>
+        <datalist id="cities">
+          <option value="San Francisco">
+          <option value="New York">
+          <option value="Seattle">
+          <option value="Los Angeles">
+          <option value="Chicago">
+        </datalist>
+      <% end %>
+    </div>
+  </div>
+</nav>

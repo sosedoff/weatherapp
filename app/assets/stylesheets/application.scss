@@ -1,0 +1,28 @@
+.container {
+  max-width: 730px !important;
+}
+
+main.container {
+  padding-top: 30px;
+}
+
+.forecast {
+  &.current, &.today {
+    margin-bottom: 20px;
+  }
+}
+
+.weather-icon {
+  background-position: center;
+
+  &.small {
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+  }
+
+  &.large {
+    width: 150px;
+    height: 150px;
+  }
+}

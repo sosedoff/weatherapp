@@ -1,0 +1,18 @@
+<h2>Recent Locations</h2>
+
+<div class="row">
+<% locations.each do |loc| %>
+  <div class="col-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div><a href="<%= current_weather_path(loc.id) %>"><%= loc.display_name %></a></div>
+        <% if loc.weather_point %>
+          <div class="display-3"><%= loc.weather_point.temp %>&deg;</div>
+          <div><%= loc.weather_point.condition %></div>
+        <% else %>
+          <p class="text-muted">Weather N/A</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
