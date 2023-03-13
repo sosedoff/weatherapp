@@ -75,3 +75,13 @@ Jobs handle all background processing in the application, which consists of:
 - Scheduling data updates for locations with stale weather data
 - Fetching current weather data for locations and persisting data points in DB/Cache
 - Fetching extended forecast data and caching it without DB persistence.
+
+## Consideration
+
+Various suggestions for improving throughput and experience of the service:
+
+- Throttling calls to third-party APIs (geo location/weather) so that we don't blow up the quotas. Ideally we would extract the APIs into their own infrastructure and deployments.
+- Adding client request throttling to prevent misuse/scraping of the data or unexpected load. Limit by IP / time period.
+- Preloading of known location data (such as ZIP codes) and cities to speed up geocoding lookups, maintain a hot cache of top requests.
+- Integration with performance tracking tools: error reporting, application performance metrics, etc.
+- Denormalization of data in the DB to allow for quicker cached data lookup when KV caches are not available (hot tables for the most popular usages).
