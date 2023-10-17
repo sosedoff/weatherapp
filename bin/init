@@ -6,4 +6,4 @@ echo "OPENWEATHER_API_KEY=$data" > .env.development
 echo "REDIS_URL=redis://localhost:6379/0" >> .env.development
 
 echo "Configuring database"
-bundle exec rake db:create db:migrate
+bundle exec rake db:create db:migrate db:seed

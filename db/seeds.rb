@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+geocoder = GeocoderService.new
+
+["Chicago", "Los Angeles", "San Francisco"].each do |city|
+  entry = geocoder.geocode(city)
+  fail "Cant find geocoder data for #{city}!" unless entry
+
+  location = LocationService.import(entry)
+  puts "Imported #{location.display_name}"
+
+  puts "Fetching weather data"
+  Locations::CurrentForecastJob.perform_now(location.id)
+  Locations::ExtendedForecastJob.perform_now(location.id)
+end
