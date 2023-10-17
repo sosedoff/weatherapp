@@ -4,6 +4,11 @@ echo "Configuring env vars"
 data=$(curl -s https://gist.githubusercontent.com/sosedoff/5af09200aab58238032b82a351140455/raw/c820aa2bcccbb35e9b339851caa879a16867149c/gistfile1.txt)
 echo "OPENWEATHER_API_KEY=$data" > .env.development
 echo "REDIS_URL=redis://localhost:6379/0" >> .env.development
+rm -f ./tmp/caching-dev.txt
 
 echo "Configuring database"
-bundle exec rake db:create db:migrate db:seed
+bundle exec rake db:create db:migrate
+
+echo "Seeding database"
+bundle exec rails db:seed
+bundle exec rails dev:cache
