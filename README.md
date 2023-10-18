@@ -8,7 +8,7 @@
 - Ruby 3.2
 - PostgreSQL (for persistent storage)
 - Redis (for caching and background job processing)
-- OpenWeather API key (for fetching weather data)
+- OpenWeather API key (for fetching weather data). Example key is provided.
 
 Workflow and Code overview is located in [NOTES.md](/NOTES.md)
 
@@ -26,17 +26,30 @@ bundle install
 
 Make sure PostgreSQL and Redis are installed and running.
 
-Next, execute the init script that will setup env vars and migrate database:
+Next, execute the init script that will setup env vars and migrate/seed the database:
 
 ```bash
 ./bin/init
+```
+
+If not using the init script, first create a env config file `.env.development` by
+copying the example one:
+
+```bash
+cp .env.example .env.development
+```
+
+Then prepare and seed the database:
+
+```bash
+bundle exec rails db:create db:migrate db:seed
 ```
 
 ## Running application
 
 To start web and worker processes, run:
 
-```
+```bash
 bundle exec foreman start
 ```
 
@@ -46,14 +59,14 @@ This will start the Rails process on `http://localhost:3000` and Sidekiq worker.
 
 Enable Rails caching in development:
 
-```
+```bash
 bundle exec rails dev:cache
 ```
 
 ### Configuring OpenWeather Client
 
 Make sure you have valid [OpenWeather API](https://openweathermap.org/api) key.
-See `.env.development` for an example one.
+See `./bin/init` script for a Gist containing example key.
 
 To configure the client, edit the `config/initializers/open_weather.rb` file:
 

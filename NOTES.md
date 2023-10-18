@@ -1,7 +1,7 @@
 # Application Overview
 
 This is a demo weather application to query and display Weather information from third
-party service based on the input city, zipcode or an address.
+party service(s) based on the input city, zip code or an address.
 
 We're using [Open Weather API](https://openweathermap.org/api) for current and forecast
 weather. [Geocoder](http://www.rubygeocoder.com/) gem is used to translate location
@@ -23,21 +23,21 @@ done via Sidekiq jobs.
 
 ## Flow
 
-1. Application does not include any locations by default, so user must search for a city or a zipcode.
-2. City (or zipcode) is entered into the search box on the home page
+1. Application includes a few example locations by default, but users are free to add as many as they want.
+2. City (or zip code) is entered into the search box on the home page
 3. We then attempt to geocode the query (via sync call) to determine geo coordinates and location info (city,state,etc). All query lookups are cached for 24 hours (including invalid ones).
 4. If query is geocoded, we're creating a new `Location` record that references the third party data (via `external_id`) and store all necessary attributes.
-   4.1. Skip if location already exists.
-   4.2. If location is missing any required data, we let user know that query was invalid.
-   4.3. Kick off weather data sync via `CurrentForecastJob` jobs.
+  - Skip if location already exists.
+  - If location is missing any required data, we let user know that query was invalid.
+  - Kick off weather data sync via `CurrentForecastJob` jobs.
 5. We redirect user to the weather page for the specific location.
-   5.1. If location weather has not been synced, we display loading screen while the background job is working.
-   5.2. We automatically refresh the page every 2 seconds (UX could be improved here) until we know when the weather data is available.
-   5.3. Page is reloaded and displaying the most recent weather information along with the extended forecast.
+  - If location weather has not been synced, we display loading screen while the background job is working.
+  - We automatically refresh the page every 2 seconds (UX could be improved here) until we know when the weather data is available.
+  - Page is reloaded and displaying the most recent weather information along with the extended forecast.
 6. When location already exists, we just try to pull what we have in cache/DB and display the information.
 7. Every minute the background job is kicked off and will periodically update current/forecasted weather for locations in the system (only when necessary)
 
-NOTE: We could safely drop the entire cache (in Redis) and the application can still dislay
+NOTE: We could safely drop the entire cache (in Redis) and the application can still display
 the most recent weather information (excluding the extended forecast).
 
 ## Structure
