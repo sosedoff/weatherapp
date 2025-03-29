@@ -3,6 +3,9 @@
 <img src="/public/screens/1.png" style="max-width:50%" />
 <img src="/public/screens/2.png" style="max-width:50%" />
 
+This is a test Ruby on Rails application to illustrate certain features of the framework, like
+background jobs and custom service client development.
+
 ## Requirements
 
 - Ruby 3.2
@@ -93,3 +96,7 @@ To execute the spec suite:
 ```
 bundle exec rspec spec/
 ```
+
+## License
+
+Application and its code is distributed under MIT License
