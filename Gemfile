@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.8"
 
 gem "dotenv-rails"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
@@ -22,6 +22,7 @@ gem "redis"
 gem "sidekiq", "~> 6.0"
 gem "sidekiq-cron"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "nio4r", "~> 2.7.4", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -160,7 +160,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.7.4)
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
     pg (1.4.6)
@@ -283,6 +283,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-24
 
 DEPENDENCIES
   bootsnap
@@ -299,6 +300,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   lograge (~> 0.12.0)
+  nio4r (~> 2.7.4)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
@@ -316,7 +318,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.8p263
 
 BUNDLED WITH
    2.4.7
