@@ -96,3 +96,7 @@ To execute the spec suite:
 ```
 bundle exec rspec spec/
 ```
+
+## License
+
+Application and its code is distributed under MIT License
