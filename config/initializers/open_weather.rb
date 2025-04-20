@@ -8,6 +8,6 @@ OpenWeather.debug = true
 
 # Using configuration block to set common settings
 OpenWeather.configure do |cfg|
-  cfg.units = "imperial"
+  cfg.units = ENV.fetch("OPENWEATHER_UNITS", "imperial")
   cfg.language = "en"
 end

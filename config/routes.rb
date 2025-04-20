@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "weather/:id/extended", to: "forecast#extended", as: "extended_weather"
 
   # Sidekiq UI for inspecting jobs
-  if Rails.env.development?
+  if Rails.env.development? || ENV["SIDEKIQ_WEB_ENABLED"] == "true"
     mount Sidekiq::Web => "/_sidekiq"
   end
 end

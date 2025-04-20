@@ -3,10 +3,10 @@ module OpenWeather
     attr_accessor :api_key, :debug, :language, :units
 
     def initialize
-      @api_key = ENV["OPENWEATHER_API_KEY"]
-      @debug = false
+      @api_key  = ENV["OPENWEATHER_API_KEY"]
+      @units    = ENV.fetch("OPENWEATHER_UNITS", "imperial")
+      @debug    = false
       @language = "en"
-      @units = "imperial"
     end
   end
 end
