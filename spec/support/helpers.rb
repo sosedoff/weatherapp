@@ -12,9 +12,9 @@ module SpecHelpers
   end
 
   def enqueued_jobs(klass = nil)
-    klass = klass.to_s if klass
+    klass_name = klass.is_a?(Class) ? klass.name : klass.to_s if klass
     jobs = ApplicationJob.queue_adapter.enqueued_jobs
-    jobs.reject! { |j| j["job_class"] != klass } if klass
+    jobs.reject! { |j| j["job_class"] != klass_name } if klass_name
     jobs
   end
 end
