@@ -8,6 +8,7 @@ module Geocoding
       end
 
       def lookup(query)
+        raise "!!!!"
         result = geocode(query)
         result = result.first if result.is_a?(Array)
         result ? format_entry(result) : nil
@@ -25,13 +26,18 @@ module Geocoding
       end
 
       def format_entry(result)
+        # Create a unique ID based on coordinates and name
+        unique_id = "ow_#{result['lat']}_#{result['lon']}_#{result['name']}".gsub(/[^a-zA-Z0-9_]/, '_')
+        
         Geocoding::Entry.new(
+          id: unique_id,
           display_name: result["name"],
-          city:         result["name"],
-          country:      result["country"],
-          zipcode:      result["zip"],
-          lat:          result["lat"],
-          lon:          result["lon"]
+          city: result["name"],
+          state: result["state"] || "Unknown",
+          country: result["country"],
+          zipcode: result["zip"],
+          lat: result["lat"],
+          lon: result["lon"]
         )
       end
     end

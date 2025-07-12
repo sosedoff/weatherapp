@@ -7,8 +7,9 @@ class GeocoderService
   CACHE_PREFIX = "geocoder"
 
   def geocode(input)
-    Cache.query_cache(CACHE_PREFIX, input) do
-      Geocoding.provider.lookup(input)
-    end
+    #Cache.query_cache(CACHE_PREFIX, input) do
+    #fail "IM SEARCHING FOR #{input},. provider: #{Geocoding.provider.inspect}"
+    Geocoding.provider.lookup(input)
+    #end
   end
 end

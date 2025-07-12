@@ -31,3 +31,6 @@
 .DS_Store
 
 .wip
+
+# Ignore coverage reports
+/coverage/
