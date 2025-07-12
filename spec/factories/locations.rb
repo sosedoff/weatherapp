@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :location do
-    external_id { "ext_chicago" }
+    sequence(:external_id) { |n| "ext_chicago_#{n}" }
     city { "Chicago" }
     state { "Illinois" }
     country { "United States" }
