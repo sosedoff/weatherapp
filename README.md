@@ -89,6 +89,63 @@ OpenWeather.configure do |cfg|
 end
 ```
 
+## Manually Updating Weather Data
+
+You can manually update all locations with the most recent weather and forecast data using provided rake tasks or via the Rails console.
+
+### Using Rake Tasks
+
+First, make sure Rails caching is enabled:
+
+```bash
+bundle exec rails dev:cache
+```
+
+Then, use one of the following rake tasks:
+
+- **Sync all locations (queues jobs for Sidekiq):**
+  ```bash
+  bundle exec rake locations:sync_all
+  ```
+- **Sync only stale locations (not updated in last 5 minutes):**
+  ```bash
+  bundle exec rake locations:sync_stale
+  ```
+- **Force sync all locations immediately (runs jobs inline):**
+  ```bash
+  bundle exec rake locations:force_sync_all
+  ```
+- **Check sync status for all locations:**
+  ```bash
+  bundle exec rake locations:status
+  ```
+
+### Using Rails Console
+
+You can also trigger syncs manually for specific locations or all locations:
+
+```bash
+bundle exec rails console
+```
+
+Then, in the console:
+
+```ruby
+# Sync a specific location by ID
+your_location = Location.find("your-location-id")
+your_location.schedule_sync
+
+# Sync all locations (queues jobs)
+Location.find_each { |loc| loc.schedule_sync }
+
+# Force sync a specific location immediately (runs jobs inline)
+location = Location.find("your-location-id")
+Locations::CurrentForecastJob.perform_now(location.id)
+Locations::ExtendedForecastJob.perform_now(location.id)
+```
+
+These commands will update both the current weather and the extended forecast for the selected locations.
+
 ## Running Tests
 
 To execute the spec suite:

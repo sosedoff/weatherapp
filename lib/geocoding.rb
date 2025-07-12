@@ -2,6 +2,7 @@
 # We're supporting a few different implementations, powered by Geocoder, OpenWeather and
 # a static one, returning data for specific lookup keys.
 #
+require "geocoding/entry"
 require "geocoding/providers/default"
 require "geocoding/providers/demo"
 require "geocoding/providers/open_weather"
